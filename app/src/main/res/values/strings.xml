@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProjectFilm</string>
+    <string name="button_menu">Меню</string>
+    <string name="button_favourites">Избранное</string>
+    <string name="button_viewed">Просмотренные</string>
+    <string name="button_recommendations">Рекомендации</string>
+    <string name="button_settings">Настройки</string>
+    <string name="disclaimer">Постеры предоставлены https://www.movieposters.com/</string>
 </resources>
