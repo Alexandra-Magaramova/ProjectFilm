@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="holo_orange_light">#FFA200</color>
-    <color name="colorPrimaryDark">#D06F00FF</color>
+    <color name="yellow_light">#FFEB3B</color>
+    <color name="green_light">#8BC34A</color>
 </resources>
