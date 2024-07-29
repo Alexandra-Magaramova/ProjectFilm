@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -76,5 +77,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     //MaterialDesign
     implementation ("com.google.android.material:material:1.12.0")
+    implementation ("androidx.recyclerview:recyclerview:1.1.0")
+    implementation ("androidx.fragment:fragment:1.3.6")
 }
 

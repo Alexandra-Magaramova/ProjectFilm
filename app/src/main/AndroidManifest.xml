@@ -13,10 +13,13 @@
         android:theme="@style/Theme.ProjectFilm"
         tools:targetApi="34">
         <activity
+            android:name=".DetailsFragment"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ProjectFilm">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
