@@ -2,6 +2,11 @@ package com.magaramova.projectfilm
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Scene
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +14,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.magaramova.projectfilm.databinding.FragmentHomeBinding
+import com.magaramova.projectfilm.databinding.MergeHomeScreenContentBinding
 import java.util.Locale
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var bindingMerge: MergeHomeScreenContentBinding
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     //база данных
     val filmsDataBase = listOf(
@@ -73,6 +80,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        bindingMerge = MergeHomeScreenContentBinding.inflate(inflater, container, false)
         val view = binding.root
         inflater.inflate(R.layout.fragment_home, container, false)
         return view
@@ -81,13 +89,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         //Устанавливаем появление клавиатуры при нажатии на все поле поиска, а не только на иконку поиска
-        binding.searchView.setOnClickListener {
-            binding.searchView.isIconified = false
+        bindingMerge.searchView.setOnClickListener {
+            bindingMerge.searchView.isIconified = false
         }
 
         //Подключаем слушателя изменений введенного текста в поиска
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        bindingMerge.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             //Этот метод отрабатывает при нажатии кнопки "поиск" на софт клавиатуре
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -118,7 +127,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyckler() {
-        binding.mainRecycler.apply {
+        bindingMerge.mainRecycler.apply {
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {
