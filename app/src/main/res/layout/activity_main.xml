@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/menu_background"
+    android:background="@drawable/background_home"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
