@@ -80,6 +80,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        AnimationHelper.performFragmentCircularRevealAnimation(binding.homeFragmentRoot, requireActivity(), 1)
 
         //Устанавливаем появление клавиатуры при нажатии на все поле поиска, а не только на иконку поиска
         binding.searchView.setOnClickListener {
