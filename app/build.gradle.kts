@@ -81,5 +81,8 @@ dependencies {
     implementation ("androidx.fragment:fragment:1.8.2")
     implementation ("com.jakewharton.timber:timber:5.0.1")
     implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
 }
 
