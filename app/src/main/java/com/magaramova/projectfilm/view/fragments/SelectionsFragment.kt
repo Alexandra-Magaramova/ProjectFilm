@@ -1,11 +1,13 @@
-package com.magaramova.projectfilm
+package com.magaramova.projectfilm.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.databinding.FragmentSelectionsBinding
+import com.magaramova.projectfilm.utils.AnimationHelper
 
 
 class SelectionsFragment : Fragment() {
@@ -15,9 +17,8 @@ class SelectionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSelectionsBinding.inflate(inflater, container, false)
-        val view = binding.root
         inflater.inflate(R.layout.fragment_selections, container, false)
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

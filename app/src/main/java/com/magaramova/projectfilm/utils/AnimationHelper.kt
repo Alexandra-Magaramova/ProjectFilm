@@ -1,4 +1,4 @@
-package com.magaramova.projectfilm
+package com.magaramova.projectfilm.utils
 
 import android.app.Activity
 import android.view.View

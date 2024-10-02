@@ -1,4 +1,4 @@
-package com.magaramova.projectfilm
+package com.magaramova.projectfilm.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

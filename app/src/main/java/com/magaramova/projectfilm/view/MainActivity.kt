@@ -1,18 +1,18 @@
-package com.magaramova.projectfilm
+package com.magaramova.projectfilm.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.databinding.ActivityMainBinding
+import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.view.fragments.DetailsFragment
+import com.magaramova.projectfilm.view.fragments.FavoritesFragment
+import com.magaramova.projectfilm.view.fragments.HomeFragment
+import com.magaramova.projectfilm.view.fragments.SelectionsFragment
+import com.magaramova.projectfilm.view.fragments.WatchLaterFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

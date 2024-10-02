@@ -1,4 +1,4 @@
-package com.magaramova.projectfilm
+package com.magaramova.projectfilm.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.magaramova.projectfilm.view.adapters.FilmListRecyclerAdapter
+import com.magaramova.projectfilm.R
+import com.magaramova.projectfilm.view.viewholders.TopSpacingItemDecoration
 import com.magaramova.projectfilm.databinding.FragmentFavoritesBinding
+import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.utils.AnimationHelper
+import com.magaramova.projectfilm.view.MainActivity
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
@@ -18,9 +24,8 @@ class FavoritesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        val view = binding.root
         inflater.inflate(R.layout.fragment_details, container, false)
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

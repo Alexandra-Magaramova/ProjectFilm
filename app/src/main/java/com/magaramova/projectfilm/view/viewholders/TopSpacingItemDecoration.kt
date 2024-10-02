@@ -1,4 +1,4 @@
-package com.magaramova.projectfilm
+package com.magaramova.projectfilm.view.viewholders
 
 import android.content.res.Resources
 import android.graphics.Rect
