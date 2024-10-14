@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/menu_home_title_text" />
+
+    <item
         android:id="@+id/favorites"
         android:icon="@drawable/round_favorite"
         android:title="@string/button_favourites"
@@ -19,5 +24,6 @@
         android:icon="@drawable/round_video_library"
         android:title="@string/button_recommendations"
         app:showAsAction="withText" />
+
 
 </menu>
