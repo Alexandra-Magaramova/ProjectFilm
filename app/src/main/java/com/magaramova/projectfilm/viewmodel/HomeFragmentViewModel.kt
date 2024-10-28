@@ -7,12 +7,21 @@ import com.magaramova.projectfilm.domain.Film
 import com.magaramova.projectfilm.domain.Interactor
 
 class HomeFragmentViewModel : ViewModel() {
-    val filmsListLiveData = MutableLiveData<List<Film>>()
+    val filmsListLiveData:  MutableLiveData<List<Film>> = MutableLiveData()
     //Инициализируем интерактор
     private var interactor: Interactor = App.instance.interactor
     init {
+        interactor.getFilmsFromApi(1, object : ApiCallback {
+            override fun onSuccess(films: List<Film>) {
+                filmsListLiveData.postValue(films)
+            }
+            override fun onFailure() {
+            }
+        })
+    }
 
-        val films = interactor.getFilmsDB()
-        filmsListLiveData.postValue(films)
+    interface ApiCallback {
+        fun onSuccess(films: List<Film>)
+        fun onFailure()
     }
 }

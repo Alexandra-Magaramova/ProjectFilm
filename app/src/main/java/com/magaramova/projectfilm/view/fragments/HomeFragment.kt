@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
             filmsAdapter.addItems(field)
         }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +49,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         AnimationHelper.performFragmentCircularRevealAnimation(binding.homeFragmentRoot, requireActivity(), 1)
 
         //Устанавливаем появление клавиатуры при нажатии на все поле поиска, а не только на иконку поиска
@@ -55,11 +57,7 @@ class HomeFragment : Fragment() {
             binding.searchView.isIconified = false
         }
 
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
-            filmsDataBase = it
-        })
-
-        //Подключаем слушателя изменений введенного текста в поиска
+       //Подключаем слушателя изменений введенного текста в поиска
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             //Этот метод отрабатывает при нажатии кнопки "поиск" на софт клавиатуре
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -87,7 +85,9 @@ class HomeFragment : Fragment() {
 
         initRecyckler()
         //Кладем нашу БД в RV
-        filmsAdapter.addItems(filmsDataBase)
+        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
+            filmsDataBase = it
+        })
     }
 
     private fun initRecyckler() {
