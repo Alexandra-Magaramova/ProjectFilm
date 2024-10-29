@@ -5,12 +5,18 @@ import androidx.lifecycle.ViewModel
 import com.magaramova.projectfilm.App
 import com.magaramova.projectfilm.domain.Film
 import com.magaramova.projectfilm.domain.Interactor
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import javax.inject.Inject
 
-class HomeFragmentViewModel : ViewModel() {
+class HomeFragmentViewModel : ViewModel(),KoinComponent {
     val filmsListLiveData:  MutableLiveData<List<Film>> = MutableLiveData()
     //Инициализируем интерактор
-    private var interactor: Interactor = App.instance.interactor
+    @Inject
+    lateinit var interactor: Interactor
+
     init {
+        App.instance.dagger.inject(this)
         interactor.getFilmsFromApi(1, object : ApiCallback {
             override fun onSuccess(films: List<Film>) {
                 filmsListLiveData.postValue(films)
