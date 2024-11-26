@@ -12,6 +12,7 @@ import com.magaramova.projectfilm.view.fragments.DetailsFragment
 import com.magaramova.projectfilm.view.fragments.FavoritesFragment
 import com.magaramova.projectfilm.view.fragments.HomeFragment
 import com.magaramova.projectfilm.view.fragments.SelectionsFragment
+import com.magaramova.projectfilm.view.fragments.SettingsFragment
 import com.magaramova.projectfilm.view.fragments.WatchLaterFragment
 
 class MainActivity : AppCompatActivity() {
@@ -110,6 +111,12 @@ class MainActivity : AppCompatActivity() {
                         changeFragment( fragment?: SelectionsFragment(), tag)
                         true
                     }
+                    R.id.settings -> {
+                    val tag = "settings"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: SettingsFragment(), tag)
+                    true
+                }
                     else -> false
                 }
             }

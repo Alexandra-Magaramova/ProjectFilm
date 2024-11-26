@@ -4,6 +4,7 @@ import com.magaramova.projectfilm.di.modules.DatabaseModule
 import com.magaramova.projectfilm.di.modules.DomainModule
 import com.magaramova.projectfilm.di.modules.RemoteModule
 import com.magaramova.projectfilm.viewmodel.HomeFragmentViewModel
+import com.magaramova.projectfilm.viewmodel.SettingsFragmentViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,6 +18,8 @@ import javax.inject.Singleton
     ]
 )
 interface AppComponent {
-    //метод для того, чтобы появилась внедрять зависимости в HomeFragmentViewModel
+    //метод для того, чтобы появилась возможность внедрять зависимости в HomeFragmentViewModel
     fun inject(homeFragmentViewModel: HomeFragmentViewModel)
+    //метод для того, чтобы появилась возможность внедрять зависимости в SettingsFragmentViewModel
+    fun inject(settingsFragmentViewModel: SettingsFragmentViewModel)
 }
