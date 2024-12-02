@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.data.ApiConstants
-import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.view.customviews.RatingDonutView
 
 //В конструктор класс передается layout, который мы создали(film_item.xml)

@@ -10,7 +10,7 @@ import com.magaramova.projectfilm.view.adapters.FilmListRecyclerAdapter
 import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.view.viewholders.TopSpacingItemDecoration
 import com.magaramova.projectfilm.databinding.FragmentFavoritesBinding
-import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.utils.AnimationHelper
 import com.magaramova.projectfilm.view.MainActivity
 

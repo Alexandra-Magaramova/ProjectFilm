@@ -1,6 +1,8 @@
 package com.magaramova.projectfilm.domain
 
+import androidx.lifecycle.LiveData
 import com.magaramova.projectfilm.data.*
+import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.data.Entity.TmdbResultsDto
 import com.magaramova.projectfilm.utils.Converter
 import com.magaramova.projectfilm.viewmodel.HomeFragmentViewModel
@@ -27,9 +29,9 @@ class Interactor(
                     val list = Converter.convertApiListToDtoList(response.body()?.tmdbFilms)
                     //Кладем фильмы в бд
                     list.forEach {
-                        repo.putToDb(film = it)
+                        repo.putToDb(list)
                     }
-                    callback.onSuccess(list)
+                    callback.onSuccess()
                 }
 
                 override fun onFailure(call: Call<TmdbResultsDto>, t: Throwable) {
@@ -47,7 +49,7 @@ class Interactor(
     //Метод для получения настроек
     fun getDefaultCategoryFromPreferences() = preferences.getDefaultCategory()
 
-    fun getFilmsFromDB(): List<Film> = repo.getAllFromDB()
+    fun getFilmsFromDB(): LiveData<List<Film>> = repo.getAllFromDB()
 }
 
 
