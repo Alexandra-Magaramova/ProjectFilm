@@ -18,6 +18,12 @@ import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.utils.AnimationHelper
 import com.magaramova.projectfilm.view.MainActivity
 import com.magaramova.projectfilm.viewmodel.HomeFragmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 import java.util.Locale
 
 class HomeFragment : Fragment() {
@@ -26,6 +32,7 @@ class HomeFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
+    private lateinit var scope: CoroutineScope
 
     private var filmsDataBase = listOf<Film>()
         //Используем backing field
@@ -62,15 +69,32 @@ class HomeFragment : Fragment() {
         //находим наш RV
         initRecyckler()
         //Кладем нашу БД в RV
+        //используем Disptchers.IO, потому как мы и совершаем операции ввода-вывода,
+        // а также, поскольку у нас это все возвращается на UI,
+        // мы при помощи  withContext(Dispatchers.Main) возвращаем все в главный поток
+        scope = CoroutineScope(Dispatchers.IO).also { scope ->
+            scope.launch {
+                viewModel.filmsListData.collect {
+                    withContext(Dispatchers.Main) {
+                        filmsAdapter.addItems(it)
+                        filmsDataBase = it
+                    }
+                }
+            }
+            scope.launch {
+                for (element in viewModel.showProgressBar) {
+                    launch(Dispatchers.Main) {
+                        binding.progressBar.isVisible = element
+                    }
+                }
+            }
+        }
 
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
-            filmsDataBase = it
-            filmsAdapter.addItems(it)
-        })
+    }
 
-        viewModel.showProgressBar.observe(viewLifecycleOwner, Observer<Boolean> {
-            binding.progressBar.isVisible = it
-        })
+    override fun onStop() {
+        super.onStop()
+        scope.cancel()
     }
 
     private fun initSearchView() {

@@ -30,7 +30,7 @@ class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //Устанавливаем постер
         //Указываем контейнер, в которм будет "жить" наша картинка
         Glide.with(itemView)
-            //Загружаем сам ресурс
+            //Загружаем сам ресурс("w342" — это размер изображения, который нужно загрузить)
             .load(ApiConstants.IMAGES_URL + "w342" + film.poster)
             //Центруем изображение
             .centerCrop()

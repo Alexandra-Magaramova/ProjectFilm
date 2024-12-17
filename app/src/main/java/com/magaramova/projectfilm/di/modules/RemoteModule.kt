@@ -11,10 +11,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+
 @Module
 class RemoteModule {
+
     @Provides
     @Singleton
+    //Создаём кастомный клиент
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
         //Настраиваем таймауты для медленного интернета
         .callTimeout(30, TimeUnit.SECONDS)
@@ -27,8 +30,10 @@ class RemoteModule {
         })
         .build()
 
+
     @Provides
     @Singleton
+    //Создаем Ретрофит
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         //Указываем базовый URL из констант
         .baseUrl(ApiConstants.BASE_URL)

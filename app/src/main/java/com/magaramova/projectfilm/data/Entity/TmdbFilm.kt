@@ -2,6 +2,7 @@ package com.magaramova.projectfilm.data.Entity
 
 import com.google.gson.annotations.SerializedName
 
+//DTO-объект, файл, который представляет единичный фильм
 data class TmdbFilm(
     @SerializedName("adult")
     val adult: Boolean,
