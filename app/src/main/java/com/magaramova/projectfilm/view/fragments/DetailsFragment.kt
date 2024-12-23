@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.data.ApiConstants
 import com.magaramova.projectfilm.databinding.FragmentDetailsBinding
-import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.data.Entity.Film
 
 
 class DetailsFragment : Fragment() {

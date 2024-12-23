@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.magaramova.projectfilm.view.viewholders.FilmViewHolder
 import com.magaramova.projectfilm.R
-import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.data.Entity.Film
 
 //в параметр передаем слушатель, чтобы мы потом могли обрабатывать нажатия из класса Activity
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

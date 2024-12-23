@@ -1,7 +1,7 @@
 package com.magaramova.projectfilm.utils
 
 import com.magaramova.projectfilm.data.Entity.TmdbFilm
-import com.magaramova.projectfilm.domain.Film
+import com.magaramova.projectfilm.data.Entity.Film
 
 object Converter {
     fun convertApiListToDtoList(list: List<TmdbFilm>?): List<Film> {
