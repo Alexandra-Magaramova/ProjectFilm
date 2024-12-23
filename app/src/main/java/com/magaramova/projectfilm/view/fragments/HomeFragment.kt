@@ -1,5 +1,6 @@
 package com.magaramova.projectfilm.view.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.magaramova.projectfilm.view.adapters.FilmListRecyclerAdapter
@@ -16,13 +16,14 @@ import com.magaramova.projectfilm.view.viewholders.TopSpacingItemDecoration
 import com.magaramova.projectfilm.databinding.FragmentHomeBinding
 import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.utils.AnimationHelper
+import com.magaramova.projectfilm.utils.AutoDisposable
+import com.magaramova.projectfilm.utils.addTo
 import com.magaramova.projectfilm.view.MainActivity
 import com.magaramova.projectfilm.viewmodel.HomeFragmentViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+
+
 
 import java.util.Locale
 
@@ -32,9 +33,9 @@ class HomeFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
-    private lateinit var scope: CoroutineScope
-
+    private val autoDisposable = AutoDisposable()
     private var filmsDataBase = listOf<Film>()
+
         //Используем backing field
         set(value) {
             //Если придет такое же значение, то мы выходим из метода
@@ -45,7 +46,11 @@ class HomeFragment : Fragment() {
             filmsAdapter.addItems(field)
         }
 
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        autoDisposable.bindTo(lifecycle)
+        retainInstance = true
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +60,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -68,34 +74,28 @@ class HomeFragment : Fragment() {
         initPullToRefresh()
         //находим наш RV
         initRecyckler()
+        viewModel.filmsListData
+
         //Кладем нашу БД в RV
-        //используем Disptchers.IO, потому как мы и совершаем операции ввода-вывода,
-        // а также, поскольку у нас это все возвращается на UI,
-        // мы при помощи  withContext(Dispatchers.Main) возвращаем все в главный поток
-        scope = CoroutineScope(Dispatchers.IO).also { scope ->
-            scope.launch {
-                viewModel.filmsListData.collect {
-                    withContext(Dispatchers.Main) {
-                        filmsAdapter.addItems(it)
-                        filmsDataBase = it
-                    }
-                }
+        viewModel.filmsListData
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { list ->
+                filmsAdapter.addItems(list)
+                filmsDataBase = list
             }
-            scope.launch {
-                for (element in viewModel.showProgressBar) {
-                    launch(Dispatchers.Main) {
-                        binding.progressBar.isVisible = element
-                    }
-                }
+            .addTo(autoDisposable)
+
+        viewModel.showProgressBar
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                binding.progressBar.isVisible = it
             }
-        }
+            .addTo(autoDisposable)
 
     }
 
-    override fun onStop() {
-        super.onStop()
-        scope.cancel()
-    }
 
     private fun initSearchView() {
         //Устанавливаем появление клавиатуры при нажатии на все поле поиска, а не только на иконку поиска
