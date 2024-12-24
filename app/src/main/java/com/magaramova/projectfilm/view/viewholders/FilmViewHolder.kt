@@ -10,15 +10,17 @@ import com.bumptech.glide.Glide
 import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.data.ApiConstants
 import com.magaramova.projectfilm.data.Entity.Film
+import com.magaramova.projectfilm.databinding.FilmItemBinding
 import com.magaramova.projectfilm.view.customviews.RatingDonutView
 
 //В конструктор класс передается layout, который мы создали(film_item.xml)
 class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val filmItemBinding = FilmItemBinding.bind(itemView)
     //Привязываем View из layout к переменным
-    private val title = itemView.findViewById<TextView>(R.id.title)
-    private val poster = itemView.findViewById<ImageView>(R.id.poster)
-    private val description = itemView.findViewById<TextView>(R.id.description)
-    public val itemContainer = itemView.findViewById<ConstraintLayout>(R.id.item_container)
+    private val title = filmItemBinding.title
+    private val poster = filmItemBinding.poster
+    private val description = filmItemBinding.description
+    private val itemContainer = filmItemBinding.itemContainer
 
     //Вот здесь мы находим в верстке наш прогресс бар для рейтинга
     public val ratingDonut = itemView.findViewById<RatingDonutView>(R.id.rating_donut)
