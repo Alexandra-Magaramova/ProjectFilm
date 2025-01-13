@@ -1,17 +1,12 @@
 package com.magaramova.projectfilm.utils
 
-import com.magaramova.projectfilm.data.Entity.TmdbFilm
+import com.magaramova.remote_module.entity.TmdbFilm
 import com.magaramova.projectfilm.data.Entity.Film
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
 
 //Конвертируем объект, пришедший с API (TmdbFilm) в объект, который мы кладем в RV (Film)
 object Converter {
 
-    fun convertApiListToDtoList(list: List<TmdbFilm>?): List<Film> {
+    fun convertApiListToDtoList(list: List<com.magaramova.remote_module.entity.TmdbFilm>?): List<Film> {
         val result = mutableListOf<Film>()
         list?.forEach {
             result.add(

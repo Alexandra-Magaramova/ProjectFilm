@@ -3,8 +3,8 @@ package com.magaramova.projectfilm.di.modules
 import android.content.Context
 import com.magaramova.projectfilm.data.MainRepository
 import com.magaramova.projectfilm.data.PreferenceProvider
-import com.magaramova.projectfilm.data.TmdbApi
 import com.magaramova.projectfilm.domain.Interactor
+import com.magaramova.remote_module.TmdbApi
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

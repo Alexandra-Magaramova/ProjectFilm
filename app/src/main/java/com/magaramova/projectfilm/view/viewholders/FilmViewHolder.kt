@@ -2,16 +2,13 @@ package com.magaramova.projectfilm.view.viewholders
 
 import android.animation.ObjectAnimator
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.magaramova.projectfilm.R
-import com.magaramova.projectfilm.data.ApiConstants
 import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.databinding.FilmItemBinding
 import com.magaramova.projectfilm.view.customviews.RatingDonutView
+import com.magaramova.remote_module.entity.ApiConstants
 
 //В конструктор класс передается layout, который мы создали(film_item.xml)
 class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
