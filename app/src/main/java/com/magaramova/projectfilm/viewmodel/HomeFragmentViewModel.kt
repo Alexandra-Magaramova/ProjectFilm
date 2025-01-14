@@ -29,4 +29,6 @@ class HomeFragmentViewModel : ViewModel() {
         interactor.getFilmsFromApi(1)
     }
 
+    fun getSearchResult(search: String) = interactor.getSearchResultFromApi(search)
+
 }

@@ -4,6 +4,7 @@ plugins {
     id ("kotlin-parcelize")
     id ("kotlin-kapt")
 }
+apply (from ="${project.rootDir}/versions_dagger.gradle")
 
 android {
     namespace = "com.magaramova.projectfilm"
@@ -16,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId = "com.magaramova.projectfilm"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -96,8 +97,11 @@ dependencies {
     implementation ("io.insert-koin:koin-android:3.5.3")
 
     //Dagger
-    implementation ("com.google.dagger:dagger:2.52")
+    implementation("com.google.dagger:dagger:2.52")
     kapt ("com.google.dagger:dagger-compiler:2.52")
+
+    //Remote module
+    implementation (project(":remote_module"))
 
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
@@ -119,5 +123,8 @@ dependencies {
     //RxJava
     implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation ("io.reactivex.rxjava3:rxjava:3.0.10")
+
+    implementation ("io.reactivex.rxjava3:rxkotlin:3.0.1")
+    implementation ("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
 }
 

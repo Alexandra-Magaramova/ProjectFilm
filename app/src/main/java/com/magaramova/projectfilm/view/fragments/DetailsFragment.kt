@@ -20,10 +20,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 
 import com.magaramova.projectfilm.R
-import com.magaramova.projectfilm.data.ApiConstants
 import com.magaramova.projectfilm.databinding.FragmentDetailsBinding
 import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.viewmodel.DetailsFragmentViewModel
+import com.magaramova.remote_module.entity.ApiConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
