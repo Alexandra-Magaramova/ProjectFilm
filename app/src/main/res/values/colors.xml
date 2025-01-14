@@ -6,5 +6,7 @@
     <color name="yellow_light">#FFEB3B</color>
     <color name="green_light">#8BC34A</color>
     <color name="red_light">#C50E3E</color>
+    <color name="pink_light">#6CAA0EC5</color>
+    <color name="red_orange">#B0ED5F0C</color>
 
 </resources>
