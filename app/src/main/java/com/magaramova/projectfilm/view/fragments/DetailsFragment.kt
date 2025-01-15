@@ -1,7 +1,13 @@
 package com.magaramova.projectfilm.view.fragments
 
 import android.Manifest
+
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.ContentValues
+import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -19,9 +25,13 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 
+
+import androidx.core.content.getSystemService
+
 import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.databinding.FragmentDetailsBinding
 import com.magaramova.projectfilm.data.Entity.Film
+import com.magaramova.projectfilm.view.notification.NotificationHelper
 import com.magaramova.projectfilm.viewmodel.DetailsFragmentViewModel
 import com.magaramova.remote_module.entity.ApiConstants
 import kotlinx.coroutines.CoroutineScope
@@ -37,6 +47,9 @@ class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private val viewModel: DetailsFragmentViewModel by viewModels()
     private val scope = CoroutineScope(Dispatchers.IO)
+    private val CHANNEL_ID = "Channel_ID"
+    private  lateinit var notificationManager: NotificationManager
+    private lateinit var notification : Notification.Builder
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +62,10 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setFilmsDetails()
+
+        binding.detailsFabNotification.setOnClickListener {
+            NotificationHelper.createNotification(requireContext(), film)
+        }
 
         binding.detailsFabFavorites.setOnClickListener {
             if (!film.isInFavorites) {
