@@ -64,8 +64,9 @@ class DetailsFragment : Fragment() {
         setFilmsDetails()
 
         binding.detailsFabNotification.setOnClickListener {
-            NotificationHelper.createNotification(requireContext(), film)
+            NotificationHelper.notificationSet(requireContext(), film)
         }
+
 
         binding.detailsFabFavorites.setOnClickListener {
             if (!film.isInFavorites) {
@@ -121,6 +122,7 @@ class DetailsFragment : Fragment() {
             if (film.isInFavorites) R.drawable.round_favorite_24
             else R.drawable.round_favorite_border_24
         )
+
     }
 
     private fun performAsyncLoadOfPoster() {

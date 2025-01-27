@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.databinding.ActivityMainBinding
 import com.magaramova.projectfilm.data.Entity.Film
-import com.magaramova.projectfilm.utils.ConnectionChecker
+import com.magaramova.projectfilm.receivers.ConnectionChecker
 import com.magaramova.projectfilm.view.fragments.DetailsFragment
 import com.magaramova.projectfilm.view.fragments.FavoritesFragment
 import com.magaramova.projectfilm.view.fragments.HomeFragment

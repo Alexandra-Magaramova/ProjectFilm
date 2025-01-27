@@ -1,4 +1,4 @@
-package com.magaramova.projectfilm.utils
+package com.magaramova.projectfilm.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
