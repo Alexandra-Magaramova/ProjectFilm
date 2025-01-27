@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(null)
             .commit()
+
+       moveToFilmFromNotification()
     }
 
     override fun onDestroy() {
@@ -68,6 +70,16 @@ class MainActivity : AppCompatActivity() {
                 .show()
         } else super.onBackPressed()
 
+    }
+
+    fun moveToFilmFromNotification(){
+        val fragmentToOpen = intent.getStringExtra("fragmentToOpen")
+        val filmToOpen = intent.getParcelableExtra("filmToOpen") as Film?
+        if(fragmentToOpen!=null){
+            if (filmToOpen != null) {
+                launchDetailsFragment(filmToOpen)
+            }
+        }
     }
 
 
