@@ -1,5 +1,6 @@
 package com.magaramova.projectfilm.view.fragments
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.magaramova.projectfilm.databinding.FragmentFavoritesBinding
 import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.utils.AnimationHelper
 import com.magaramova.projectfilm.view.MainActivity
+
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding

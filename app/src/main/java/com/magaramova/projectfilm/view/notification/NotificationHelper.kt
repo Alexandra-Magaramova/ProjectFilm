@@ -1,5 +1,6 @@
 package com.magaramova.projectfilm.view.notification
 
+
 import android.app.AlarmManager
 import android.app.DatePickerDialog
 import android.app.PendingIntent
@@ -18,7 +19,7 @@ import com.magaramova.projectfilm.R
 import com.magaramova.projectfilm.data.Entity.Film
 import com.magaramova.projectfilm.receivers.ReminderBroadcast
 import com.magaramova.projectfilm.view.MainActivity
-import com.magaramova.projectfilm.view.fragments.DetailsFragment
+
 import com.magaramova.remote_module.entity.ApiConstants
 import java.util.Calendar
 
