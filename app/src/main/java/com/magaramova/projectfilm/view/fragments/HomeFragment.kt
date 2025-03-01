@@ -1,5 +1,6 @@
 package com.magaramova.projectfilm.view.fragments
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import com.magaramova.projectfilm.utils.AnimationHelper
 import com.magaramova.projectfilm.utils.AutoDisposable
 import com.magaramova.projectfilm.utils.addTo
 import com.magaramova.projectfilm.view.MainActivity
+
 import com.magaramova.projectfilm.viewmodel.HomeFragmentViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable

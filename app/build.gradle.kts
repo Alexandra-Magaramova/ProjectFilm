@@ -14,6 +14,19 @@ android {
         viewBinding = true
     }
 
+    flavorDimensions ("version")
+    productFlavors {
+        create ("basic") {
+            dimension = "version"
+            applicationIdSuffix = ".basic"
+            versionNameSuffix = "-basic"
+        }
+        create("pro") {
+            dimension = "version"
+            applicationIdSuffix  = ".pro"
+            versionNameSuffix = "-pro"
+        }
+    }
 
     defaultConfig {
         applicationId = "com.magaramova.projectfilm"
@@ -27,6 +40,8 @@ android {
             useSupportLibrary = true
         }
     }
+
+
 
     buildTypes {
         release {
@@ -55,6 +70,18 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    sourceSets {
+        getByName("basic") {
+            java {
+                srcDirs("src/basic/java")
+            }
+        }
+        getByName("pro") {
+            java {
+                srcDirs("src/pro/java")
+            }
         }
     }
 }
